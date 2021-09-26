@@ -6,12 +6,12 @@
 </template>
 
 <script>
-import SearchFIlter from "./components/SearchFilter.vue"
+import SearchFilter from "./components/SearchFilter.vue"
 
 export default {
   name: 'App',
   components: {
-    SearchFIlter
+    SearchFilter
   }
 }
 </script>
