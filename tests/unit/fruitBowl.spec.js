@@ -27,19 +27,11 @@ it("Should leave the bowl array empty if not clicked", async()=>{
 
 it("Should copy over fruits into the bowl",async()=>{
  
-  
-    const fruitButton = wrapper.find("#pButton");
-    const bowlArray = wrapper.findAll("ul > li ").wrappers;
-    await fruitButton.trigger("");
- 
 
-   
-    const hasBanana = bowlArray.some(li => li.text() === "banana");
-    console.log(bowlArray);
-    const hasRaspberry = bowlArray.some(li => li.text() === "raspberry");
-  
-    expect(hasBanana && hasRaspberry).toBe(true);
-    
+const trigger = wrapper.find("#pButton");
+await trigger.trigger("");
+const bowl = wrapper.findAll("ul > li");
+expect(bowl.length).toBe(7);
   
 })
 });

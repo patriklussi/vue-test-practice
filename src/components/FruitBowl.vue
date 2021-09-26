@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
       <article class="fruits">
-          <p id="pButton" @click="copy(fruit)" v-for="(fruit,index) of fruits" :key=index>{{fruit}}</p>
+          <p   v-for="(fruit,index) of fruits" :key=index> <button id="pButton" @click="copy(fruit)">Press</button>{{fruit}}</p>
           </article>
           <article class="fruits">
           <ul>
