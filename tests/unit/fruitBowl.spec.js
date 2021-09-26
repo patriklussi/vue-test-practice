@@ -1,5 +1,5 @@
-import { shallowMount } from "@vue/test-utils";}
-import fruitBowl from "@/components/fruitBowl.vue";
+import { shallowMount } from "@vue/test-utils"
+import fruitBowl from "../../src/components/FruitBowl.vue";
 
 
 //Skapa två arrayer, en fylld med minst 5 frukter, den andra tom. När man klickar på en frukt så ska frukten kopieras in i den tomma arrayen.
@@ -10,7 +10,7 @@ import fruitBowl from "@/components/fruitBowl.vue";
 describe("FruitBowl.vue",()=>{
     let wrapper, data;
     beforeEach(() => {
-      data = ["apple","banana","pineapple","orange";"peach","raspberry","kiwi"];
+      data = ["apple","banana","pineapple","orange", "peach","raspberry","kiwi"];
       wrapper = shallowMount(fruitBowl, {
         data: () => {
           return {
@@ -25,12 +25,22 @@ it("Should leave the bowl array empty if not clicked", async()=>{
     expect(bowlCount.length).toBe(0);
 })
 
-it("Should copy over fruits into the bowl",()=>{
-    const bowlArray = wrapper.findAll("ul > li ");
-    const fuitButton = wrapper.find(".fruitButton");
-    await fuitButton.trigger();
+it("Should copy over fruits into the bowl",async()=>{
+ 
+  
+    const fruitButton = wrapper.find("#pButton");
+    const bowlArray = wrapper.findAll("ul > li ").wrappers;
+    await fruitButton.trigger("");
+ 
 
-    expect(bowlArray.length).toBe(data.length);
+   
+    const hasBanana = bowlArray.some(li => li.text() === "banana");
+    console.log(bowlArray);
+    const hasRaspberry = bowlArray.some(li => li.text() === "raspberry");
+  
+    expect(hasBanana && hasRaspberry).toBe(true);
+    
+  
 })
 });
 
