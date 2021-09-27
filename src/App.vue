@@ -15,6 +15,11 @@ export default {
   components: {
     SearchFilter,
  
+  },
+  async mounted(){
+    const response = await fetch("http://ddragon.leagueoflegends.com/cdn/11.19.1/data/en_US/champion.json");
+    const data = await response.json();
+    console.log(data);
   }
 }
 </script>
